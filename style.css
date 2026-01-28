@@ -381,5 +381,4 @@ ul { list-style: none; }
     border-radius: var(--radius);
 }
 
-/* Helper classes */
 .hidden { display: none !important; }
