@@ -1,4 +1,4 @@
-/ src/js/data.js
+// src/js/data.js
 
 const attractionsData = [
     // --- FRANCE 🇫🇷 ---
