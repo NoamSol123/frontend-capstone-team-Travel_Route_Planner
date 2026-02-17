@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan Your Journey | LuxeTravel</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container navbar">
+            <div class="logo">Luxe<span>Travel</span></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="planner.html" class="active">Plan Trip</a></li>
+                    <li><a href="my-routes.html">My Boarding Passes</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div id="country-selection-screen" class="container">
+        <h1 style="font-size: 3rem; margin-top: 50px;">Where would you like to go?</h1>
+        <p style="color: #666; font-size: 1.2rem;">Choose your destination to begin crafting your itinerary.</p>
+        
+        <div class="country-grid" id="country-grid-select">
+            </div>
+    </div>
+
+    <div id="planner-interface" class="hidden">
+        
+        <section class="dashboard-bar">
+            <div class="container" style="display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                    <i class="fas fa-map-marker-alt"></i> Planning for: <strong id="selected-country-title" style="color:white; font-size:1.2rem;">USA</strong>
+                </div>
+                <div>
+                    <span style="margin-right:20px"><i class="fas fa-coins"></i> Total: <span id="total-cost" class="stat-value">$0</span></span>
+                    <span><i class="fas fa-clock"></i> Time: <span id="total-time" class="stat-value">0h</span></span>
+                </div>
+                <div>
+                    <button class="btn-luxury" style="padding: 5px 20px; font-size: 0.8rem;" onclick="location.reload()">Change Country</button>
+                    <button id="save-btn" class="btn-luxury" style="background:white; color:#1a1a1a; padding: 5px 20px; font-size: 0.8rem;">Save Trip</button>
+                </div>
+            </div>
+        </section>
+
+        <main class="container planner-layout">
+            
+            <section class="catalog-section">
+                <div class="section-header">
+                    <h2>Exclusive Experiences</h2>
+                    <p>Drag items to your itinerary on the right.</p>
+                </div>
+                
+                <div id="catalog-grid" class="catalog-grid">
+                    </div>
+            </section>
+
+            <aside class="itinerary-column">
+                <div class="itinerary-section">
+                    <h3 style="margin-bottom:20px; text-align:center; border-bottom:1px solid #eee; padding-bottom:10px;">Your Itinerary</h3>
+                    
+                    <div id="drop-zone-msg" class="empty-state">
+                        <i class="fas fa-suitcase-rolling" style="font-size: 3rem; margin-bottom: 10px; color: var(--primary-color);"></i>
+                        <p>Drag experiences here</p>
+                    </div>
+                    
+                    <ul id="itinerary-list" class="itinerary-list">
+                        </ul>
+                </div>
+            </aside>
+
+        </main>
+    </div>
+
+    <script src="src/js/data.js"></script>
+    <script src="src/js/app.js"></script>
+</body>
+</html>

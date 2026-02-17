@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Boarding Passes | LuxeTravel</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container navbar">
+            <div class="logo">Luxe<span>Travel</span></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="planner.html">Plan Trip</a></li>
+                    <li><a href="my-routes.html" class="active">My Boarding Passes</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" style="margin-top: 50px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:40px;">
+            <h1>Your Saved Journeys</h1>
+            <button id="clear-history-btn" style="color: #e74c3c; background:none; border:none; cursor:pointer; font-weight:bold;">CLEAR HISTORY</button>
+        </div>
+        
+        <div id="saved-trips-container">
+            <p>Loading your trips...</p>
+        </div>
+    </main>
+
+    <script src="src/js/my-routes.js"></script>
+</body>
+</html>
