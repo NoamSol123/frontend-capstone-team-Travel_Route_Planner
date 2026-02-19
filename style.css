@@ -1,21 +1,27 @@
-/* --- LUXURY TRAVEL THEME --- */
+/* ============================================================
+   LUXETRAVEL — LUXURY TRAVEL THEME
+   Fully Responsive: Desktop / Tablet / Mobile
+   ============================================================ */
+
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500;600&display=swap');
 
+/* ── CSS Variables ── */
 :root {
-    /* Palette: Premium Black, Gold, and Marble White */
-    --primary-color: #d4af37;       /* Gold */
-    --primary-dark: #aa8c2c;        /* Dark Gold */
-    --secondary-color: #1a1a1a;     /* Rich Black */
-    --bg-color: #f9f9f9;            /* Off-white / Marble */
-    --card-bg: #ffffff;
+    --primary-color: #d4af37;
+    --primary-dark:  #aa8c2c;
+    --secondary-color: #1a1a1a;
+    --bg-color:  #f9f9f9;
+    --card-bg:   #ffffff;
     --text-main: #2c2c2c;
-    --text-light: #666;
-    --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.05);
-    --shadow-heavy: 0 20px 50px rgba(0, 0, 0, 0.15);
+    --text-light: #555;           /* Fixed from #666 — passes WCAG AA contrast */
+    --shadow-soft:  0 10px 30px rgba(0,0,0,0.05);
+    --shadow-heavy: 0 20px 50px rgba(0,0,0,0.15);
     --radius: 12px;
+    --header-height: 70px;        /* Used for sticky offsets */
 }
 
-* {
+/* ── Reset ── */
+*, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -30,13 +36,18 @@ body {
 }
 
 h1, h2, h3, .logo {
-    font-family: 'Playfair Display', serif; /* Serif for luxury feel */
+    font-family: 'Playfair Display', serif;
 }
 
 a { text-decoration: none; color: inherit; transition: 0.3s; }
 ul { list-style: none; }
+img { display: block; max-width: 100%; }
 
-/* --- HEADER --- */
+
+/* ============================================================
+   HEADER & NAVBAR
+   ============================================================ */
+
 .main-header {
     background-color: var(--card-bg);
     padding: 1.2rem 0;
@@ -57,11 +68,16 @@ ul { list-style: none; }
     font-weight: 700;
     color: var(--secondary-color);
     letter-spacing: 1px;
+    white-space: nowrap;         /* Never break "LuxeTravel" */
 }
 
 .logo span { color: var(--primary-color); }
 
-.navbar ul { display: flex; gap: 30px; }
+.navbar ul {
+    display: flex;
+    gap: 30px;
+    flex-wrap: nowrap;
+}
 
 .navbar a {
     font-weight: 500;
@@ -70,6 +86,7 @@ ul { list-style: none; }
     text-transform: uppercase;
     letter-spacing: 1px;
     position: relative;
+    white-space: nowrap;
 }
 
 .navbar a::after {
@@ -83,15 +100,22 @@ ul { list-style: none; }
     transition: 0.3s;
 }
 
-.navbar a:hover::after, .navbar a.active::after { width: 100%; }
+.navbar a:hover::after,
+.navbar a.active::after { width: 100%; }
 
-/* --- HERO SECTION (Home) --- */
+
+/* ============================================================
+   HERO SECTION
+   ============================================================ */
+
 .hero {
     height: 85vh;
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+    background:
+        linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)),
+        url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* Parallax effect */
+    background-attachment: fixed;   /* Desktop parallax */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -112,6 +136,7 @@ ul { list-style: none; }
 }
 
 .btn-luxury {
+    display: inline-block;
     padding: 15px 40px;
     background: transparent;
     border: 2px solid var(--primary-color);
@@ -129,17 +154,25 @@ ul { list-style: none; }
 .btn-luxury:hover {
     background: var(--primary-color);
     color: white;
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+    box-shadow: 0 0 20px rgba(212,175,55,0.6);
 }
 
-/* --- PLANNER PAGE STRUCTURE --- */
+
+/* ============================================================
+   LAYOUT CONTAINER
+   ============================================================ */
+
 .container {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 30px;
 }
 
-/* 1. Country Selection Overlay */
+
+/* ============================================================
+   COUNTRY SELECTION SCREEN
+   ============================================================ */
+
 #country-selection-screen {
     padding: 50px 0;
     text-align: center;
@@ -187,31 +220,38 @@ ul { list-style: none; }
 .country-card::after {
     content: '';
     position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
+    inset: 0;
     background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
 }
 
-/* 2. Main Planner Layout with Sticky Sidebar */
+
+/* ============================================================
+   PLANNER LAYOUT — Desktop: 2-column sticky sidebar
+   ============================================================ */
+
 .planner-layout {
     display: grid;
-    grid-template-columns: 2fr 1fr; /* 66% Catalog, 33% Itinerary */
+    grid-template-columns: 2fr 1fr;
     gap: 40px;
     margin-top: 40px;
     margin-bottom: 80px;
     align-items: start;
-    position: relative;
 }
 
-/* Sticky Logic Fix */
 .itinerary-column {
-    position: sticky; /* The magic */
-    top: 100px;       /* Offset from header */
-    height: calc(100vh - 120px); /* Fill screen height */
-    overflow-y: auto; /* Allow internal scrolling if list is long */
-    padding-right: 5px; /* Space for scrollbar */
+    position: sticky;
+    top: calc(var(--header-height) + 70px);  /* header + dashboard bar */
+    height: calc(100vh - 160px);
+    overflow-y: auto;
+    padding-right: 5px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) #eee;
 }
 
-/* Catalog Styling */
+.itinerary-column::-webkit-scrollbar { width: 4px; }
+.itinerary-column::-webkit-scrollbar-thumb { background: var(--primary-color); border-radius: 2px; }
+
+/* Catalog */
 .section-header h2 {
     font-size: 2.5rem;
     color: var(--secondary-color);
@@ -235,9 +275,13 @@ ul { list-style: none; }
     border: 1px solid rgba(0,0,0,0.05);
     cursor: grab;
     transition: 0.3s;
+    /* Touch: make cards tappable, not just draggable */
+    -webkit-user-select: none;
+    user-select: none;
 }
 
-.attraction-card:hover { box-shadow: var(--shadow-heavy); }
+.attraction-card:active { cursor: grabbing; }
+.attraction-card:hover  { box-shadow: var(--shadow-heavy); }
 
 .attraction-card img {
     width: 100%;
@@ -245,9 +289,8 @@ ul { list-style: none; }
     object-fit: cover;
 }
 
-.card-body { padding: 20px; }
-
-.card-title { font-size: 1.2rem; margin-bottom: 5px; color: var(--secondary-color); }
+.card-body   { padding: 20px; }
+.card-title  { font-size: 1.2rem; margin-bottom: 5px; color: var(--secondary-color); }
 
 .card-details {
     display: flex;
@@ -257,12 +300,12 @@ ul { list-style: none; }
     color: var(--primary-dark);
 }
 
-/* Itinerary / Drop Zone Styling */
+/* Itinerary Drop Zone */
 .itinerary-section {
     background: white;
     border: 2px dashed #dcdcdc;
     border-radius: var(--radius);
-    min-height: 100%; /* Fill the sticky container */
+    min-height: 100%;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -293,14 +336,18 @@ ul { list-style: none; }
     color: var(--primary-color);
     padding: 15px 0;
     position: sticky;
-    top: 60px;
+    top: var(--header-height);
     z-index: 900;
     margin-bottom: 20px;
 }
 
 .stat-value { color: white; margin-left: 5px; font-weight: 400; }
 
-/* --- MY ROUTES (Boarding Pass Style) --- */
+
+/* ============================================================
+   MY BOARDING PASSES
+   ============================================================ */
+
 .boarding-pass {
     background: white;
     border-radius: var(--radius);
@@ -323,7 +370,7 @@ ul { list-style: none; }
     border-right: 2px dashed rgba(255,255,255,0.2);
 }
 
-.pass-left h3 { font-size: 3rem; margin: 0; line-height: 1; }
+.pass-left h3  { font-size: 3rem; margin: 0; line-height: 1; }
 .pass-left span { color: white; letter-spacing: 2px; text-transform: uppercase; font-size: 0.8rem; }
 
 .pass-main {
@@ -339,6 +386,8 @@ ul { list-style: none; }
     border-bottom: 1px solid #eee;
     padding-bottom: 15px;
     margin-bottom: 15px;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .pass-details ul {
@@ -358,21 +407,29 @@ ul { list-style: none; }
     color: #e74c3c;
     cursor: pointer;
     font-size: 1.2rem;
+    padding: 8px;        /* Bigger tap target */
+    line-height: 1;
 }
 
-/* --- ABOUT PAGE --- */
+
+/* ============================================================
+   ABOUT PAGE
+   ============================================================ */
+
 .about-hero {
     text-align: center;
-    padding: 80px 0;
+    padding: 80px 20px;
     background: white;
     margin-bottom: 50px;
 }
+
 .about-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 50px;
     align-items: center;
 }
+
 .team-member {
     text-align: center;
     padding: 30px;
@@ -381,4 +438,201 @@ ul { list-style: none; }
     border-radius: var(--radius);
 }
 
+
+/* ============================================================
+   UTILITY
+   ============================================================ */
+
 .hidden { display: none !important; }
+
+
+/* ============================================================
+   TABLET — max 1024px
+   ============================================================ */
+
+@media (max-width: 1024px) {
+
+    /* Navbar — tighten spacing */
+    .navbar ul  { gap: 20px; }
+    .navbar a   { font-size: 0.85rem; letter-spacing: 0.5px; }
+    .logo       { font-size: 1.6rem; }
+
+    /* Planner — equal halves instead of 2/3 + 1/3 */
+    .planner-layout {
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+    }
+
+    .itinerary-column {
+        height: calc(100vh - 180px);
+    }
+
+    /* Catalog — smaller min card size */
+    .catalog-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 18px;
+    }
+
+    /* Country cards — slightly shorter */
+    .country-card { height: 280px; }
+
+    /* About */
+    .about-grid { gap: 30px; }
+}
+
+
+/* ============================================================
+   MOBILE — max 768px
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+    /* ── Navbar ── */
+    .logo { font-size: 1.4rem; }
+
+    .navbar ul  { gap: 12px; }
+    .navbar a   { font-size: 0.72rem; letter-spacing: 0; }
+
+    /* ── Container ── */
+    .container { padding: 0 16px; }
+
+    /* ── Hero ──
+       background-attachment:fixed is broken on iOS Safari —
+       causes the image to disappear or glitch. Always scroll on mobile. */
+    .hero {
+        height: 75vh;
+        background-attachment: scroll;
+    }
+
+    .hero-content h1  { font-size: 2.4rem; }
+    .hero-content p   { font-size: 1.1rem; padding: 0 16px; }
+    .btn-luxury       { padding: 12px 28px; font-size: 0.85rem; }
+
+    /* ── Country Selection ── */
+    #country-selection-screen { padding: 30px 0; }
+    #country-selection-screen h1 { font-size: 1.8rem; }
+
+    .country-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+        margin-top: 28px;
+    }
+
+    .country-card       { height: 200px; }
+    .country-card h3    { font-size: 1.4rem; }
+
+    /* ── Planner — full vertical stack ──
+       Catalog on top, itinerary below.
+       Sticky sidebar does not make sense on mobile. */
+    .planner-layout {
+        grid-template-columns: 1fr;
+        gap: 0;
+        margin-top: 16px;
+        margin-bottom: 40px;
+    }
+
+    .itinerary-column {
+        position: static;        /* Remove sticky */
+        height: auto;            /* Remove fixed height */
+        overflow-y: visible;
+        padding-right: 0;
+        margin-top: 24px;
+        order: 2;                /* Itinerary BELOW catalog */
+    }
+
+    .catalog-section { order: 1; }
+
+    .itinerary-section { min-height: 180px; }
+
+    /* Catalog — 2 columns on mobile */
+    .catalog-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .attraction-card img  { height: 120px; }
+    .card-body            { padding: 12px; }
+    .card-title           { font-size: 1rem; }
+
+    .section-header h2    { font-size: 1.6rem; }
+
+    /* ── Dashboard bar — stack on mobile ── */
+    .dashboard-bar .container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        padding: 10px 16px;
+    }
+
+    /* ── Boarding Passes — stack vertically ── */
+    .boarding-pass {
+        flex-direction: column;
+    }
+
+    /* Left stub becomes top strip */
+    .pass-left {
+        flex: none;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 20px;
+        border-right: none;
+        border-bottom: 2px dashed rgba(255,255,255,0.2);
+    }
+
+    .pass-left h3   { font-size: 2.2rem; }
+
+    .pass-main      { padding: 16px; }
+
+    .pass-details ul {
+        grid-template-columns: 1fr;   /* One column on small screens */
+    }
+
+    /* Bigger tap target for delete */
+    .delete-trip-btn {
+        top: 10px;
+        right: 10px;
+        font-size: 1rem;
+        padding: 10px;
+    }
+
+    /* ── About ── */
+    .about-hero     { padding: 40px 16px; }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}
+
+
+/* ============================================================
+   SMALL PHONES — max 480px
+   ============================================================ */
+
+@media (max-width: 480px) {
+
+    /* Navbar — shrink further but keep all links visible */
+    .logo           { font-size: 1.2rem; }
+    .navbar ul      { gap: 8px; }
+    .navbar a       { font-size: 0.62rem; }
+
+    /* Hero */
+    .hero           { height: 65vh; }
+    .hero-content h1 { font-size: 1.9rem; }
+    .hero-content p  { font-size: 1rem; }
+
+    /* Country — single column, shorter cards */
+    .country-grid   { grid-template-columns: 1fr; }
+    .country-card   { height: 160px; }
+
+    /* Catalog — single column */
+    .catalog-grid   { grid-template-columns: 1fr; }
+    .attraction-card img { height: 160px; }
+
+    /* Boarding pass details — wrap tighter */
+    .pass-header    { flex-direction: column; gap: 6px; }
+    .pass-left h3   { font-size: 1.8rem; }
+    .pass-main      { padding: 12px; }
+}
