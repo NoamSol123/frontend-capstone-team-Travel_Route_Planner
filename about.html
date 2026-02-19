@@ -4,57 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us | LuxeTravel</title>
+    <meta name="description" content="Learn about the LuxeTravel project — a premium travel itinerary builder built with HTML5, CSS3, and Vanilla JavaScript as a final front-end development project.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="main-header">
+
+    <header class="main-header" role="banner">
         <div class="container navbar">
-            <div class="logo">Luxe<span>Travel</span></div>
-            <nav>
+            <a href="index.html" class="logo" aria-label="LuxeTravel — go to homepage">Luxe<span>Travel</span></a>
+            <nav aria-label="Main navigation">
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="planner.html">Plan Trip</a></li>
                     <li><a href="my-routes.html">My Boarding Passes</a></li>
-                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="about.html" class="active" aria-current="page">About</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <section class="about-hero">
-        <div class="container">
-            <h1>Redefining Travel Planning</h1>
-            <p style="max-width: 600px; margin: 20px auto;">LuxeTravel was built with one mission: to make the process of planning a trip as enjoyable as the trip itself.</p>
-        </div>
-    </section>
+    <main>
 
-    <section class="container" style="margin-bottom: 100px;">
-        <div class="about-grid">
-            <div>
-                <h2>The Project</h2>
-                <p>This application was developed as a Final Front-End Project. It demonstrates advanced DOM manipulation, state management, drag-and-drop interfaces, and local storage persistence.</p>
-                <br>
-                <p><strong>Tech Stack:</strong> HTML5, Modern CSS (Flex/Grid/Variables), Vanilla JavaScript (ES6+).</p>
+        <!-- HERO -->
+        <section class="about-hero" aria-labelledby="about-heading">
+            <div class="container">
+                <h1 id="about-heading">Redefining Travel Planning</h1>
+                <p style="max-width:600px; margin:16px auto 0; color:var(--text-light); font-size:1.1rem;">
+                    LuxeTravel was built with one mission: to make planning a trip as enjoyable as the trip itself.
+                </p>
             </div>
-            <div style="background: #eee; height: 300px; border-radius: 12px; display:flex; align-items:center; justify-content:center;">
-                <span style="color:#aaa;">Project Screenshot Placeholder</span>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="container" style="text-align: center; margin-bottom: 100px;">
-        <h2>The Team</h2>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin-top: 40px;">
-            <div class="team-member">
-                <h3>Student A</h3>
-                <p>Lead Developer & Logic</p>
+        <!-- THE PROJECT -->
+        <section class="container" style="margin-bottom:90px;" aria-labelledby="project-heading">
+            <div class="about-grid">
+                <div>
+                    <h2 id="project-heading">The Project</h2>
+                    <p style="margin-top:16px; color:var(--text-light); line-height:1.8;">
+                        This application was developed as a Final Front-End Project. It demonstrates advanced DOM manipulation, state management, drag-and-drop interfaces, and local storage persistence — all without any external frameworks.
+                    </p>
+                    <p style="margin-top:16px;">
+                        <strong>Tech Stack:</strong> HTML5, Modern CSS (Flexbox / Grid / Custom Properties), Vanilla JavaScript ES6+.
+                    </p>
+                </div>
+                <div
+                    style="background:#eee; height:300px; border-radius:12px; display:flex; align-items:center; justify-content:center;"
+                    role="img"
+                    aria-label="Project screenshot placeholder">
+                    <span style="color:#999; font-size:0.9rem;">Project Screenshot Placeholder</span>
+                </div>
             </div>
-            <div class="team-member">
-                <h3>Student B</h3>
-                <p>UI/UX Designer</p>
+        </section>
+
+        <!-- THE TEAM -->
+        <section class="container" style="text-align:center; margin-bottom:100px;" aria-labelledby="team-heading">
+            <h2 id="team-heading">The Team</h2>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:30px; margin-top:40px;">
+                <div class="team-member">
+                    <h3>Student A</h3>
+                    <p>Lead Developer &amp; Logic</p>
+                </div>
+                <div class="team-member">
+                    <h3>Student B</h3>
+                    <p>UI/UX Designer</p>
+                </div>
             </div>
-            </div>
-    </section>
+        </section>
+
+    </main>
 
 </body>
 </html>

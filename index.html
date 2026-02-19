@@ -4,16 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LuxeTravel | Premium Route Planner</title>
+    <meta name="description" content="LuxeTravel — Plan your perfect luxury trip. Curate personalized itineraries, track your budget in real-time, and save your journeys as beautiful boarding passes.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header class="main-header">
+    <header class="main-header" role="banner">
         <div class="container navbar">
-            <div class="logo">Luxe<span>Travel</span></div>
-            <nav>
+            <a href="index.html" class="logo" aria-label="LuxeTravel — go to homepage">Luxe<span>Travel</span></a>
+            <nav aria-label="Main navigation">
                 <ul>
-                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="index.html" class="active" aria-current="page">Home</a></li>
                     <li><a href="planner.html">Plan Trip</a></li>
                     <li><a href="my-routes.html">My Boarding Passes</a></li>
                     <li><a href="about.html">About</a></li>
@@ -22,31 +27,91 @@
         </div>
     </header>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>The World Awaits</h1>
-            <p>Curate your perfect journey with our premium itinerary builder.</p>
-            <a href="planner.html" class="btn-luxury">Start Planning</a>
-        </div>
-    </section>
+    <main>
 
-    <section class="container" style="padding: 80px 0; text-align: center;">
-        <h2 style="font-size: 2.5rem; margin-bottom: 50px;">Why Choose LuxeTravel?</h2>
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px;">
-            <div style="padding: 20px;">
-                <h3 style="color: var(--primary-dark);">Curated Locations</h3>
-                <p>Only the finest destinations.</p>
+        <!-- HERO -->
+        <section class="hero" aria-label="Welcome banner">
+            <div class="hero-content">
+                <h1>The World Awaits</h1>
+                <p>Curate your perfect journey with our premium itinerary builder.</p>
+                <a href="planner.html" class="btn-luxury">Start Planning</a>
             </div>
-            <div style="padding: 20px;">
-                <h3 style="color: var(--primary-dark);">Smart Budgeting</h3>
-                <p>Real-time cost calculation.</p>
+        </section>
+
+        <!-- WHY LUXETRAVEL -->
+        <section class="features-section" aria-labelledby="features-heading">
+            <div class="container">
+                <h2 id="features-heading">Why Choose LuxeTravel?</h2>
+                <div class="features-grid">
+
+                    <article class="feature-card">
+                        <div class="feature-icon" aria-hidden="true">
+                            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+                        </div>
+                        <div class="feature-text">
+                            <h3>Curated Locations</h3>
+                            <p>Only the finest destinations handpicked for the discerning traveller — 5 countries, 40 exclusive experiences.</p>
+                        </div>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon" aria-hidden="true">
+                            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        </div>
+                        <div class="feature-text">
+                            <h3>Smart Budgeting</h3>
+                            <p>Real-time cost and duration tracking as you drag experiences into your itinerary — no surprises.</p>
+                        </div>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon" aria-hidden="true">
+                            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                        </div>
+                        <div class="feature-text">
+                            <h3>Seamless Sync</h3>
+                            <p>Save trips as elegant boarding passes. No account needed — your plans persist across sessions automatically.</p>
+                        </div>
+                    </article>
+
+                </div>
             </div>
-            <div style="padding: 20px;">
-                <h3 style="color: var(--primary-dark);">Seamless Sync</h3>
-                <p>Save your plans instantly.</p>
+        </section>
+
+        <!-- HOW IT WORKS -->
+        <section class="steps-section" aria-labelledby="steps-heading">
+            <div class="container">
+                <h2 id="steps-heading">Plan Your Trip in 3 Steps</h2>
+                <ol class="steps-grid">
+                    <li class="step-card">
+                        <span class="step-number" aria-hidden="true">01</span>
+                        <h3>Choose a Destination</h3>
+                        <p>Select from France, Italy, USA, Japan, or the UK to unlock curated experiences.</p>
+                    </li>
+                    <li class="step-card">
+                        <span class="step-number" aria-hidden="true">02</span>
+                        <h3>Build Your Itinerary</h3>
+                        <p>Drag and drop exclusive experiences into your personal trip plan, cost updates instantly.</p>
+                    </li>
+                    <li class="step-card">
+                        <span class="step-number" aria-hidden="true">03</span>
+                        <h3>Save Your Journey</h3>
+                        <p>Store your trip as a beautiful boarding pass, always ready whenever you return.</p>
+                    </li>
+                </ol>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta-section" aria-labelledby="cta-heading">
+            <div class="container cta-inner">
+                <h2 id="cta-heading">Ready to plan your dream trip?</h2>
+                <p>Join thousands of travellers who plan smarter with LuxeTravel.</p>
+                <a href="planner.html" class="btn-luxury cta-btn">Start Planning Now</a>
+            </div>
+        </section>
+
+    </main>
 
 </body>
 </html>
